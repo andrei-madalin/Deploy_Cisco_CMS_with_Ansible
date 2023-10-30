@@ -1,9 +1,11 @@
-# Cisco Meeting Server Deployment wiht ANSIBLE
+# Deploy Cisco Meeting Server  with ANSIBLE
 
 This guide provides step-by-step instructions for deploying Cisco Meeting Server (CMS) in your environment with Ansible. Cisco Meeting Server is a powerful collaboration platform that enables video and audio meetings for organizations. It offers scalability, security, and integration capabilities for effective communication.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
+  - [Step 1: Configure WSL ](#step-1-Configure-WSL)(skip if you have already installed WSL or Linux)
+  - [Step 2: Install Ansible packeges ](#step-2-Install-Ansible)
 - [Variable Steps](#Variable-steps)
 - [Tasks Steps](#Tasks-steps)
 - [Deployment Steps](#deployment-steps)
@@ -12,15 +14,16 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
   
 ## Prerequisites
         Before you begin the Cisco Meeting Server deployment, ensure you have the following prerequisites:
-
-        - A server or virtual machine with Cisco Meeting Server
+        1. Ansible workstation (Windows with WSL or Linux)
+        2. 
+        3. A server or virtual machine with Cisco Meeting Server
                 - To asign IP on CMS VM you need to:
                         - Access console VM CMS :
                                 - ipv4 a add ip/mask gw
                                 - ipv4 a enable 
 
-        - Cisco Meeting Server software installation package ( CMS version tested 3.8).
-        - Network connectivity to integrate with your existing environment.
+                a. Cisco Meeting Server software installation package ( CMS version tested 3.8).
+                b. Network connectivity to integrate with your existing environment.
 
 ## Variable Steps
         1. Complete hosts file with VM CMS IP (ansible_host) and username (ansible_user).
