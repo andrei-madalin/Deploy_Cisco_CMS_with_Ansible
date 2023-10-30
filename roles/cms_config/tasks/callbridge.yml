@@ -1,0 +1,34 @@
+- name: Set certs
+  raw: callbridge certs {{ cms_certificate + ".key " }} {{ cms_certificate +".crt" }} 
+  
+- name: Set certs for c2w
+  raw: callbridge trust c2w {{ cms_certificate_fullchain +".crt" }} 
+- name: Set certs for database (if exists)
+  raw:  callbridge trust cluster  {{ cms_certificate_fullchain +".crt" }} 
+
+- name: Listen ports
+  raw: callbridge listen {{ callbridge_interfaces }}
+- name: Restart callbridge
+  raw: callbridge restart
+  register: res
+  failed_when: res.stdout.find("FAILURE") > -1
+- name: Get status of callbridge
+  raw: callbridge
+  register: res
+- name: callbridge status
+  debug:
+    msg: "{{ res.stdout_lines }}"
+
+- name: Verify Web Service ready
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port }}/api/v1/callBridges
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      name: "{{ CN_CMS }}"
+      address: "{{ 'https://' + CN_CMS }}"
+  delegate_to: localhost

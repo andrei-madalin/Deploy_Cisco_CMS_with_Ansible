@@ -1,0 +1,63 @@
+#NTP server 
+ntp_server: 192.168.10.42
+dns_server: 192.168.28.152
+
+#Certificate details
+#CN_CMS is the same with SAN and is better to be the same with webbridge user link https://cms.test.lab
+CA_certificate_name: CA_selfsigned
+CN_CMS: cmss.test.lab
+cms_certificate : cmscertificate
+cms_certificate_fullchain: cmscertificate-fullchain       #when sign csr with CA self signed, cmscertificate -> cmscertificate-fullchain
+
+#Callbridge details
+callbridge_interfaces: a
+
+# Webadmin details
+webadmin_interfaces: a
+webadmin_port: 8445
+webadmin_http_redirect: True
+
+#Webbridge3 details
+webbridge3_interfaces:
+  interface: a
+  port: 443
+
+webbridge3_c2w_interfaces: 
+  interface: a 
+  port : 8999
+
+#Ldap details
+#ldapMappings details
+ldap_mapping_jidMapping:	$sAMAccountName$@test.lab
+ldap_mapping_nameMapping:	$cn$
+# cdrTagMapping	:
+# coSpaceNameMapping:	
+# coSpaceUriMapping:	
+# coSpaceSecondaryUriMapping:	
+# coSpaceCallIdMapping:	
+ldap_mapping_authenticationIdMapping :	$sAMAccountName$
+
+#ldap server details 
+ldap_server_address: 192.168.28.152
+ldap_server_name: active-dir
+ldap_server_portNumber:	389
+ldap_server_username: CN=sync-cms sync,OU=OU_Grupuri,DC=test,DC=lab
+ldap_server_password: '1q2w#E$R'
+ldap_server_secure: false
+
+#ldapSources details 
+ldap_sources_name:	Administratori
+ldap_sources_server:	14b58863-143e-441e-95cd-1b2a5af60e39
+ldap_sources_mapping:	1ab6cecc-b18c-484d-9f46-017f94db2b19
+ldap_sources_baseDn:	OU=OU_Administratori,DC=test,DC=lab
+ldap_sources_filter:	objectClass=person
+ldap_sources_tenant:	e2cbc581-b686-4bff-bd2c-2cb3cafd9448
+ldap_sources_userProfile:	6b46ca8b-57c9-4d1b-9dac-f905adbf4876
+ldap_sources_nonMemberAccess:	true
+
+#ldap Sync details 
+ldap_sync_source: ae3602d1-3713-43a5-933f-53445a4197da
+
+#scheduler
+scheduler_interfaces: a
+scheduler_port: 8449

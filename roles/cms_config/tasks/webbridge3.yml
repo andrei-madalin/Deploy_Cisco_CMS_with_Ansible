@@ -1,0 +1,47 @@
+- name: Disable webbridge
+  raw: webbridge3 disable
+- name: Set certificate for webbridge3 interface
+  raw: webbridge3 https certs {{ cms_certificate + ".key " }} {{ cms_certificate_fullchain +".crt" }} 
+
+- name: Set interface/port for c2w
+  raw: webbridge3 c2w listen {{ webbridge3_c2w_interfaces['interface'] + ':'}}{{ webbridge3_c2w_interfaces['port'] }}
+
+- name: Set interface/port for webbridge3  
+  raw: webbridge3 https listen {{ webbridge3_interfaces['interface'] + ':'}}{{ webbridge3_interfaces['port'] }}
+
+- name: Set certificate for c2w 
+  raw: webbridge3 c2w certs {{ cms_certificate + ".key " }} {{ cms_certificate_fullchain +".crt" }} 
+  
+- name: Trust c2w certificate
+  raw: webbridge3 c2w trust {{ cms_certificate_fullchain +".crt" }} 
+
+- name: Enable HTTP Redirect
+  raw: webbridge3 http-redirect enable
+
+- name: Enable Webbridge3
+  raw: webbridge3 enable
+    
+- name: Get status of webbridge
+  raw: webbridge3
+  register: res
+
+- name: webbridge3 status
+  debug:
+    msg: "{{ res.stdout_lines }}"
+
+# Add Web Bridge 3 
+- name: Add WebBridge3 POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/webBridges
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      url: "{{ 'c2w://' + CN_CMS +':'}}{{ webbridge3_c2w_interfaces['port'] }}"
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost

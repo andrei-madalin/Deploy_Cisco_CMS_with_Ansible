@@ -1,0 +1,27 @@
+#before generate Certificate you have to configure NTP server
+- name: Configure NTP servers
+  raw: ntp server add {{ ntp_server }}
+
+- name: Configure DNS server
+  raw: dns add forwardzone . {{dns_server}}
+
+# generate self signed certificate
+- name: Generate self-signed CA cert
+  raw: pki selfsigned {{ CA_certificate_name }}  
+
+- name: Generate CSR for callbrdige webbridge3 and webadmin
+  raw: pki csr  {{ cms_certificate + " CN:" + CN_CMS  + " subjectAltName:" + CN_CMS }}
+
+- name: Sign CSR with Self signed CA Cert
+  raw: pki sign   {{ cms_certificate }} {{CA_certificate_name}}
+
+
+#   register: res
+# - name: webadmin status
+#   debug:
+#     msg: "{{ res }}"
+
+
+
+
+  

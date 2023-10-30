@@ -1,0 +1,26 @@
+# Scheduler  configuration commands
+- name: Disable scheduler
+  raw: scheduler disable
+  
+- name: Listen ports for scheduler
+  raw: scheduler https listen {{ scheduler_interfaces }} {{ scheduler_port }}
+
+- name: Set certs for scheduler
+  raw: scheduler https certs {{ cms_certificate + ".key " }} {{ cms_certificate_fullchain +".crt" }} 
+
+- name: Set certs for c2w scheduler 
+  raw: scheduler c2w certs {{ cms_certificate + ".key " }} {{ cms_certificate_fullchain +".crt" }} 
+
+- name: trust C2W
+  raw: scheduler c2w trust {{ cms_certificate_fullchain +".crt" }} 
+
+- name: Enable scheduler
+  raw: scheduler enable
+
+- name: Get status of scheduler
+  raw: scheduler
+  register: res
+
+- name: scheduler status
+  debug:
+    msg: "{{ res.stdout_lines }}"

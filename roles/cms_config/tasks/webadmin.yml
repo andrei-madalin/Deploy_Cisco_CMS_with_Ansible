@@ -1,0 +1,17 @@
+# Webadmin configuration commands
+- name: Disable webadmin
+  raw: webadmin disable
+- name: Set certs for webadmin
+  raw: webadmin certs {{ cms_certificate + ".key " }} {{ cms_certificate +".crt" }} 
+- name: Listen ports for webadmin
+  raw: webadmin listen {{ webadmin_interfaces }} {{ webadmin_port }}
+- name: Enable Webadmin
+  raw: webadmin enable
+  register: res
+  failed_when: res.stdout.find("FAILURE") > -1
+- name: Get status of webadmin
+  raw: webadmin
+  register: res
+- name: webadmin status
+  debug:
+    msg: "{{ res.stdout_lines }}"

@@ -1,0 +1,10 @@
+---
+- name: Deploy Cisco CMS from Ansible Playbook
+  strategy: debug
+  gather_facts: no
+  hosts: cms_1
+  vars_files:
+    - ./vars/variable.yml
+  tasks:
+    - import_role:
+        name: cms_config

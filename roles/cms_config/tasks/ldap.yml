@@ -1,0 +1,50 @@
+- name: Create LDAP Mapping POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/ldapMappings
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      jidMapping: "{{ ldap_mapping_jidMapping }}"
+      nameMapping: "{{ ldap_mapping_nameMapping }}"
+      authenticationIdMapping: "{{ldap_mapping_authenticationIdMapping}}"
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: ldap_mappings_post_response
+
+- debug:
+    var: ldap_mappings_post_response.status
+
+- name: Create LDAP Sources POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/ldapSources
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      name : "{{ ldap_sources_name }}"
+      server : "{{ ldap_sources_server }}"
+      mapping  : "{{ldap_sources_mapping}}"
+      baseDn : "{{ldap_sources_baseDn}}"
+      filter: "{{ldap_sources_filter}}"
+      #tenant: "{{ldap_sources_tenant}}"
+      #userProfile: "{{ldap_sources_userProfile}}"
+      nonMemberAccess: "{{ldap_sources_nonMemberAccess}}"
+     
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: ldap_sources_post_response
+
+- debug:
+    var: ldap_sources_post_response
+
