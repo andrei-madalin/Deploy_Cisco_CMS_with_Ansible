@@ -27,7 +27,7 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
 
 ## Variable Steps
         1. Complete hosts file with VM CMS IP (ansible_host) and username (ansible_user).
-        2. Complete vaiable.yml with your details.
+        2. Complete variable.yml with your details.
 
 ## Tasks 
         1. Network config and generate certificate 

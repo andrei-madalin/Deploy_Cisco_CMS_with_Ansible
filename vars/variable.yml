@@ -61,3 +61,12 @@ ldap_sync_source: ae3602d1-3713-43a5-933f-53445a4197da
 #scheduler
 scheduler_interfaces: a
 scheduler_port: 8449
+# email_server: 192.168.28.152
+# email_port: 25
+# email_username: test
+# email_protocol: smtp
+# email_common_address:
+# email_starttls: disable
+# email_display_name: Email_display_name
+# email_auth: disable
+# email_trust_bundle: cmscertificate-fullchain 

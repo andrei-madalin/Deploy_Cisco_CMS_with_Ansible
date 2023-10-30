@@ -12,7 +12,19 @@
   raw: scheduler c2w certs {{ cms_certificate + ".key " }} {{ cms_certificate_fullchain +".crt" }} 
 
 - name: trust C2W
-  raw: scheduler c2w trust {{ cms_certificate_fullchain +".crt" }} 
+  raw: scheduler c2w trust {{ cms_certificate_fullchain +".crt" }}
+  
+
+# - name: email server
+#   raw: scheduler email server {{email_server}} {{email_port}}
+# - name: email username 
+#   raw: scheduler email username {{email_username}}
+# - name: email protocol 
+#   raw: scheduler email protocol {{email_protocol}}
+# - name: email auth  
+#   raw: scheduler email auth {{email_auth}}
+# - name: email starttls
+#   raw: scheduler email starttls {{email_starttls}}
 
 - name: Enable scheduler
   raw: scheduler enable
@@ -24,3 +36,7 @@
 - name: scheduler status
   debug:
     msg: "{{ res.stdout_lines }}"
+
+
+
+    
