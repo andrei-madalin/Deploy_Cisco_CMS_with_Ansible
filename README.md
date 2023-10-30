@@ -14,18 +14,12 @@ You need to have preinstalled VM with Cisco Meeting Server (version tested 3.8) 
         - ipv4 a add ip/mask gw
         - ipv4 a enable 
 
-After that you have to coplete vaiable.yml and hosts file
+After that you have to coplete/modify vaiable.yml and hosts files.
 
-Then, modify hosts file to replace ip address of your CMS node.
 
-```
-cms1 ansible_host=<your cms node>
-```
+Run ansible-playbook command:
 
-Run ansible-playbook command
+        $ ansible-playbook -i hosts playbook.yml --ask-pass 
 
-```
-ansible-playbook -i hosts playbook.yml --ask-pass 
-```
 
 
