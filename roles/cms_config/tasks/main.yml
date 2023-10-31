@@ -1,43 +1,43 @@
-# # Call task gen_cert.yml
-# - name: Generate certificate
-#   import_tasks: gen_cert.yml
-#   tags: Gen_self_signed_certificate
+# Call task gen_cert.yml
+- name: Generate certificate
+  import_tasks: gen_cert.yml
+  tags: Gen_self_signed_certificate
 
-# # Call Webadmin yml file to config Webadmin interface
-# - name: Configure WebAdmin
-#   import_tasks: webadmin.yml
-#   tags: Configure_webadmin
+# Call Webadmin yml file to config Webadmin interface
+- name: Configure WebAdmin
+  import_tasks: webadmin.yml
+  tags: Configure_webadmin
 
-#   # Call callbridge yml file to config callbridge component
-# - name: Configure Callbridge
-#   import_tasks: callbridge.yml
-#   tags: Configure_callbridge
+  # Call callbridge yml file to config callbridge component
+- name: Configure Callbridge
+  import_tasks: callbridge.yml
+  tags: Configure_callbridge
 
-# # #    Call webbridge3 yml file to config Webbridge3 component
-# # - name: Configure webbridge3
-# #   import_tasks: webbridge3.yml
-# #   tags: Configure_webbridge3
+#    Call webbridge3 yml file to config Webbridge3 component
+- name: Configure webbridge3
+  import_tasks: webbridge3.yml
+  tags: Configure_webbridge3
 
- #  Call scheduler yml file to config scheduler component
-# - name: Configure scheduler
-#   import_tasks: scheduler.yml
-#   tags: Configure_scheduler
+#  Call scheduler yml file to config scheduler component
+- name: Configure scheduler
+  import_tasks: scheduler.yml
+  tags: Configure_scheduler
 
-# #    Call ldap yml file to config ldap component
-# - name: Configure ldap
-#   import_tasks: ldap.yml
-#   tags: Configure_ldap
+#    Call ldap yml file to config ldap component
+- name: Configure ldap
+  import_tasks: ldap.yml
+  tags: Configure_ldap
 
-# #    Call call_leg_profiles yml file to config call leg profile 
-# - name: Configure call_leg_profile
-#   import_tasks: call_leg_profiles.yml
-#   tags: Configure_call_leg_profiles
+#    Call call_leg_profiles yml file to config call leg profile 
+- name: Configure call_leg_profile
+  import_tasks: call_leg_profiles.yml
+  tags: Configure_call_leg_profiles
 
 
-# #    Call call_profiles yml file to config call  profile 
-# - name: Configure call_profile
-#   import_tasks: call_profiles.yml
-#   tags: Configure_call_profiles
+#    Call call_profiles yml file to config call  profile 
+- name: Configure call_profile
+  import_tasks: call_profiles.yml
+  tags: Configure_call_profiles
 
 
 
