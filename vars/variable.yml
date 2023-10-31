@@ -1,6 +1,6 @@
 #NTP server 
-ntp_server: x.x.x.x(ip)
-dns_server: x.x.x.x(ip)
+ntp_server: 192.168.10.42
+dns_server: 192.168.28.152
 
 #Certificate details
 #CN_CMS is the same with SAN and is better to be the same with webbridge user link https://cms.test.lab
@@ -31,18 +31,18 @@ webbridge3_c2w_interfaces:
 ldap_mapping_jidMapping:	$sAMAccountName$@test.lab
 ldap_mapping_nameMapping:	$cn$
 # cdrTagMapping	:
-# coSpaceNameMapping:	
-# coSpaceUriMapping:	
+coSpaceNameMapping:	$cn$ personal coSpace
+coSpaceUriMapping:	$cn$ personal coSpace
 # coSpaceSecondaryUriMapping:	
 # coSpaceCallIdMapping:	
 ldap_mapping_authenticationIdMapping :	$sAMAccountName$
 
 #ldap server details 
-ldap_server_address: x.x.x.x(ip)        
+ldap_server_address: 192.168.28.152         
 ldap_server_name: active-dir
 ldap_server_portNumber:	389
-ldap_server_username: cn_of_user-sync       #CN=sync-cms sync,OU=OU_Grupuri,DC=test,DC=lab
-ldap_server_password: password
+ldap_server_username: CN=sync-cms sync,OU=OU_Grupuri,DC=test,DC=lab
+ldap_server_password: '1q2w#E$R'
 ldap_server_secure: false
 
 #ldapSources details 
@@ -55,12 +55,13 @@ ldap_sources_tenant:
 ldap_sources_userProfile:	
 ldap_sources_nonMemberAccess:	true
 
-
+#ldap Sync details 
+ldap_sync_source: ae3602d1-3713-43a5-933f-53445a4197da
 
 #scheduler
 scheduler_interfaces: a
 scheduler_port: 8449
-# email_server: x.x.x.x(ip)
+# email_server: 192.168.28.152
 # email_port: 25
 # email_username: test
 # email_protocol: smtp

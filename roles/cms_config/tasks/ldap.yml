@@ -10,6 +10,8 @@
     body:
       jidMapping: "{{ ldap_mapping_jidMapping }}"
       nameMapping: "{{ ldap_mapping_nameMapping }}"
+      coSpaceUriMapping: "{{ coSpaceUriMapping }}"
+      coSpaceNameMapping: "{{ coSpaceNameMapping }}"
       authenticationIdMapping: "{{ldap_mapping_authenticationIdMapping}}"
     status_code:
       - 200
