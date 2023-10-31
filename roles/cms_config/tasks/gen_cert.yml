@@ -16,12 +16,6 @@
   raw: pki sign   {{ cms_certificate }} {{CA_certificate_name}}
 
 
-#   register: res
-# - name: webadmin status
-#   debug:
-#     msg: "{{ res }}"
-
-
 
 
   
