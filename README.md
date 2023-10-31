@@ -11,15 +11,15 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
   - [Step 1: host file](#step-1-host-file)
   - [Step 2: variable file](#step-2-variable-file)
 - [Tasks Steps](#Tasks-steps)
-  - [Step 1: Network config & certificate](#step-1-gen_cert)
-  - [Step 2: Webadmin](#step-2-Webadmin)
-  - [Step 3: Callbridge](#step-3-Callbridge)
-  - [Step 4: Webbridge3](#step-4-Webbridge3)
-  - [Step 5: Scheduler](#step-5-Scheduler)
-  - [Step 6: LDAP](#step-6-LDAP)
-  - [Step 7: Call_Leg_Profiles](#step-7-Call_Leg_Profiles)
-  - [Step 8: Call_Profiles](#step-8-Call_Profiles)
-  - [Step 9: CoSpaceTemplates](#step-9-CoSpaceTemplates)
+  - [Step 1: Network config & generate certificate](#step-1-gen_cert)
+  - [Step 2: Configure Webadmin](#step-2-Webadmin)
+  - [Step 3: Configure Callbridge](#step-3-Callbridge)
+  - [Step 4: Configure Webbridge3](#step-4-Webbridge3)
+  - [Step 5: Configure Scheduler](#step-5-Scheduler)
+  - [Step 6: Configure LDAP](#step-6-LDAP)
+  - [Step 7: Create Call_Leg_Profiles](#step-7-Call_Leg_Profiles)
+  - [Step 8: Create Call_Profiles](#step-8-Call_Profiles)
+  - [Step 9: Create CoSpaceTemplates](#step-9-CoSpaceTemplates)
 - [Deployment Steps](#deployment-steps)
   - [Step 1: One step only](#step-1-one-step-only)
   - [Step 2: One or more tasks](#step-2-run-one-or-more-tasks)
@@ -67,8 +67,15 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
         6. Configure LDAP  integration
                 ldap.yml
 
-        7. Configure Call Leg Profiles  
+        7. Create Call Leg Profiles  
                 call_leg_profiles.yml
+
+        8. Create Call  Profiles  
+                call_profiles.yml
+
+        7. Create CoSpaceTemplates 
+                cospace_templates.yml
+
 
 
 
