@@ -19,14 +19,20 @@
 # #   tags: Configure_webbridge3
 
  #  Call scheduler yml file to config scheduler component
-- name: Configure scheduler
-  import_tasks: scheduler.yml
-  tags: Configure_scheduler
+# - name: Configure scheduler
+#   import_tasks: scheduler.yml
+#   tags: Configure_scheduler
 
 # #    Call ldap yml file to config ldap component
 # - name: Configure ldap
 #   import_tasks: ldap.yml
 #   tags: Configure_ldap
+
+#    Call call_leg_profiles yml file to config call leg profile 
+- name: Configure call_leg_profile
+  import_tasks: call_leg_profiles.yml
+  tags: Configure_call_leg_profiles
+
 
 
 

@@ -70,3 +70,64 @@ scheduler_port: 8449
 # email_display_name: Email_display_name
 # email_auth: disable
 # email_trust_bundle: cmscertificate-fullchain 
+
+
+## Call Leg Profile
+Call_Leg_Profile:
+  Guest:
+    name: GUEST
+    endCallAllowed: false
+    deactivationMode: deactivate
+    deactivationModeTime: 10
+    needsActivation: true
+    allowAllPresentationContributionAllowed: true
+    presentationViewingAllowed: true
+    defaultLayout: telepresence
+    muteOthersAllowed: false
+    changeJoinAudioMuteOverrideAllowed: false
+    videoMuteOthersAllowed: false
+    muteSelfAllowed: true
+    allowAllMuteSelfAllowed: true
+    videoMuteSelfAllowed: true
+    joinToneParticipantThreshold: 5
+    leaveToneParticipantThreshold: 5
+    videoMode: auto
+    rxAudioMute: false
+    txAudioMute: false
+    rxVideoMute: false
+    txVideoMute: false
+    participantLabels: true
+    changeLayoutAllowed: true
+    presentationContributionAllowed: true
+    sipPresentationChannelEnabled: true
+    bfcpMode: serverAndClient
+    callLockAllowed: false
+
+  Host:
+    name: HOST
+    endCallAllowed: false
+    deactivationMode: deactivate
+    deactivationModeTime: 10
+    needsActivation: true
+    allowAllPresentationContributionAllowed: true
+    presentationViewingAllowed: true
+    defaultLayout: telepresence
+    muteOthersAllowed: true
+    changeJoinAudioMuteOverrideAllowed: true
+    videoMuteOthersAllowed: true
+    muteSelfAllowed: true
+    allowAllMuteSelfAllowed: true
+    videoMuteSelfAllowed: true
+    joinToneParticipantThreshold: 5
+    leaveToneParticipantThreshold: 5
+    videoMode: auto
+    rxAudioMute: false
+    txAudioMute: false
+    rxVideoMute: false
+    txVideoMute: false
+    participantLabels: true
+    changeLayoutAllowed: true
+    presentationContributionAllowed: true
+    sipPresentationChannelEnabled: true
+    bfcpMode: serverAndClient
+    callLockAllowed: true

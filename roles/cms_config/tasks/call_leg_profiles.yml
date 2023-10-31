@@ -1,0 +1,96 @@
+# Add Call_Leg_Profile
+
+- name: Add Call_Leg_Profile HOST POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/callLegProfiles
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      name: "{{ Call_Leg_Profile['Guest']['name'] }}"
+      endCallAllowed: "{{ Call_Leg_Profile['Guest']['endCallAllowed'] }}"
+      deactivationMode: "{{ Call_Leg_Profile['Guest']['deactivationMode'] }}"
+      deactivationModeTime: "{{ Call_Leg_Profile['Guest']['deactivationModeTime'] }}"
+      needsActivation: "{{ Call_Leg_Profile['Guest']['needsActivation'] }}"
+      allowAllPresentationContributionAllowed: "{{ Call_Leg_Profile['Guest']['allowAllPresentationContributionAllowed'] }}"
+      presentationViewingAllowed: "{{ Call_Leg_Profile['Guest']['presentationViewingAllowed'] }}"
+      defaultLayout: "{{ Call_Leg_Profile['Guest']['defaultLayout'] }}"
+      muteOthersAllowed: "{{ Call_Leg_Profile['Guest']['muteOthersAllowed'] }}"
+      changeJoinAudioMuteOverrideAllowed: "{{ Call_Leg_Profile['Guest']['changeJoinAudioMuteOverrideAllowed'] }}"
+      videoMuteOthersAllowed: "{{ Call_Leg_Profile['Guest']['videoMuteOthersAllowed'] }}"
+      muteSelfAllowed: "{{ Call_Leg_Profile['Guest']['muteSelfAllowed'] }}"
+      allowAllMuteSelfAllowed: "{{ Call_Leg_Profile['Guest']['allowAllMuteSelfAllowed'] }}"
+      videoMuteSelfAllowed: "{{ Call_Leg_Profile['Guest']['videoMuteSelfAllowed'] }}"
+      joinToneParticipantThreshold: "{{ Call_Leg_Profile['Guest']['joinToneParticipantThreshold'] }}"
+      leaveToneParticipantThreshold: "{{ Call_Leg_Profile['Guest']['leaveToneParticipantThreshold'] }}"
+      videoMode: "{{ Call_Leg_Profile['Guest']['videoMode'] }}"
+      rxAudioMute: "{{ Call_Leg_Profile['Guest']['rxAudioMute'] }}"
+      txAudioMute: "{{ Call_Leg_Profile['Guest']['txAudioMute'] }}"
+      rxVideoMute: "{{ Call_Leg_Profile['Guest']['rxVideoMute'] }}"
+      txVideoMute: "{{ Call_Leg_Profile['Guest']['txVideoMute'] }}"
+      participantLabels: "{{ Call_Leg_Profile['Guest']['participantLabels'] }}"
+      changeLayoutAllowed: "{{ Call_Leg_Profile['Guest']['changeLayoutAllowed'] }}"
+      presentationContributionAllowed: "{{ Call_Leg_Profile['Guest']['presentationContributionAllowed'] }}"
+      sipPresentationChannelEnabled: "{{ Call_Leg_Profile['Guest']['sipPresentationChannelEnabled'] }}"
+      bfcpMode: "{{ Call_Leg_Profile['Guest']['bfcpMode'] }}"
+      callLockAllowed: "{{ Call_Leg_Profile['Guest']['callLockAllowed'] }}"     
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: call_leg_profile_guest_response
+
+- debug:
+    var: call_leg_profile_guest_response
+
+
+
+
+- name: Add Call_Leg_Profile  HOST POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/callLegProfiles
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      name: "{{ Call_Leg_Profile['Host']['name'] }}"
+      endCallAllowed: "{{ Call_Leg_Profile['Host']['endCallAllowed'] }}"
+      deactivationMode: "{{ Call_Leg_Profile['Host']['deactivationMode'] }}"
+      deactivationModeTime: "{{ Call_Leg_Profile['Host']['deactivationModeTime'] }}"
+      needsActivation: "{{ Call_Leg_Profile['Host']['needsActivation'] }}"
+      allowAllPresentationContributionAllowed: "{{ Call_Leg_Profile['Host']['allowAllPresentationContributionAllowed'] }}"
+      presentationViewingAllowed: "{{ Call_Leg_Profile['Host']['presentationViewingAllowed'] }}"
+      defaultLayout: "{{ Call_Leg_Profile['Host']['defaultLayout'] }}"
+      muteOthersAllowed: "{{ Call_Leg_Profile['Host']['muteOthersAllowed'] }}"
+      changeJoinAudioMuteOverrideAllowed: "{{ Call_Leg_Profile['Host']['changeJoinAudioMuteOverrideAllowed'] }}"
+      videoMuteOthersAllowed: "{{ Call_Leg_Profile['Host']['videoMuteOthersAllowed'] }}"
+      muteSelfAllowed: "{{ Call_Leg_Profile['Host']['muteSelfAllowed'] }}"
+      allowAllMuteSelfAllowed: "{{ Call_Leg_Profile['Host']['allowAllMuteSelfAllowed'] }}"
+      videoMuteSelfAllowed: "{{ Call_Leg_Profile['Host']['videoMuteSelfAllowed'] }}"
+      joinToneParticipantThreshold: "{{ Call_Leg_Profile['Host']['joinToneParticipantThreshold'] }}"
+      leaveToneParticipantThreshold: "{{ Call_Leg_Profile['Host']['leaveToneParticipantThreshold'] }}"
+      videoMode: "{{ Call_Leg_Profile['Host']['videoMode'] }}"
+      rxAudioMute: "{{ Call_Leg_Profile['Host']['rxAudioMute'] }}"
+      txAudioMute: "{{ Call_Leg_Profile['Host']['txAudioMute'] }}"
+      rxVideoMute: "{{ Call_Leg_Profile['Host']['rxVideoMute'] }}"
+      txVideoMute: "{{ Call_Leg_Profile['Host']['txVideoMute'] }}"
+      participantLabels: "{{ Call_Leg_Profile['Host']['participantLabels'] }}"
+      changeLayoutAllowed: "{{ Call_Leg_Profile['Host']['changeLayoutAllowed'] }}"
+      presentationContributionAllowed: "{{ Call_Leg_Profile['Host']['presentationContributionAllowed'] }}"
+      sipPresentationChannelEnabled: "{{ Call_Leg_Profile['Host']['sipPresentationChannelEnabled'] }}"
+      bfcpMode: "{{ Call_Leg_Profile['Host']['bfcpMode'] }}"
+      callLockAllowed: "{{ Call_Leg_Profile['Host']['callLockAllowed'] }}"     
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: call_leg_profile_Host_response
+
+- debug:
+    var: call_leg_profile_Host_response
