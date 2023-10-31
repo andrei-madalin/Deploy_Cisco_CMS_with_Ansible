@@ -51,8 +51,8 @@ ldap_sources_server:	14b58863-143e-441e-95cd-1b2a5af60e39
 ldap_sources_mapping:	1ab6cecc-b18c-484d-9f46-017f94db2b19
 ldap_sources_baseDn:	OU=OU_Administratori,DC=test,DC=lab
 ldap_sources_filter:	objectClass=person
-ldap_sources_tenant:	e2cbc581-b686-4bff-bd2c-2cb3cafd9448
-ldap_sources_userProfile:	6b46ca8b-57c9-4d1b-9dac-f905adbf4876
+ldap_sources_tenant:	
+ldap_sources_userProfile:	
 ldap_sources_nonMemberAccess:	true
 
 #ldap Sync details 

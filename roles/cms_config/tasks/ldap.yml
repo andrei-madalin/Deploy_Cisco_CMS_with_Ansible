@@ -18,7 +18,34 @@
   register: ldap_mappings_post_response
 
 - debug:
-    var: ldap_mappings_post_response.status
+    var: ldap_mappings_post_response
+
+- name: Create LDAP Servers POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/ldapServers  
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      address: "{{ ldap_server_address }}"
+      name: "{{ ldap_server_name }}"
+      portnumber: "{{ldap_server_portNumber}}"
+      username: "{{ldap_server_username}}"
+      password: "{{ldap_server_password}}"
+      secure: "{{ldap_server_secure}}"
+
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: ldap_server_post_response
+
+- debug:
+    var: ldap_server_post_response
+
 
 - name: Create LDAP Sources POST
   uri:
@@ -31,8 +58,8 @@
     body_format: form-urlencoded 
     body:
       name : "{{ ldap_sources_name }}"
-      server : "{{ ldap_sources_server }}"
-      mapping  : "{{ldap_sources_mapping}}"
+      server : "{{ ldap_server_post_response.location[-36:] }}"                 #get the uri of ldapserver, may have different length
+      mapping  : "{{ldap_mappings_post_response.location[-36:] }}"              #get the uri of ldapserver, may have different length
       baseDn : "{{ldap_sources_baseDn}}"
       filter: "{{ldap_sources_filter}}"
       #tenant: "{{ldap_sources_tenant}}"
@@ -47,4 +74,27 @@
 
 - debug:
     var: ldap_sources_post_response
+
+
+- name: Create LDAP SYNC POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/ldapSyncs
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded 
+    body:
+      ldapSource : "{{ ldap_sources_post_response.location[-36:] }}"                 #get the uri of ldapserver, may have different length
+      
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: ldap_sync_post_response
+
+- debug:
+    var:   ldap_sync_post_response
+
 

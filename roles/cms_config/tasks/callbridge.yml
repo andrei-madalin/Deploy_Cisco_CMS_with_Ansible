@@ -19,7 +19,7 @@
   debug:
     msg: "{{ res.stdout_lines }}"
 
-- name: Verify Web Service ready
+- name: Create Callbridge
   uri:
     url: https://{{ ansible_host }}:{{ webadmin_port }}/api/v1/callBridges
     method: POST
@@ -31,4 +31,13 @@
     body:
       name: "{{ CN_CMS }}"
       address: "{{ 'https://' + CN_CMS }}"
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
   delegate_to: localhost
+  register: callbridge_response
+  until: 100 <= callbridge_response.status < 500
+  retries: 1
+  delay: 10
+- debug:
+    var: callbridge_response
