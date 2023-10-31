@@ -131,3 +131,40 @@ Call_Leg_Profile:
     sipPresentationChannelEnabled: true
     bfcpMode: serverAndClient
     callLockAllowed: true
+
+
+
+
+
+## Call Profile
+Call_Profile:
+  Profile_allow_everything:
+    name: Profile_allow_everything
+    participantLimit: 100
+    locked: false
+    recordingMode: manual 
+    streamingMode: manual
+    passcodeMode: timeout
+    passcodeTimeout: 5
+    gatewayAudioCallOptimization: true
+    sipRecordeUri: demo_recorder@recorder.local
+    sipStremerUri: demo_streamer@streamer.local
+    messageBannerText: "Test Message"
+    chatAllowed: 	true
+    raiseHandEnabled: true
+    notesAllowed:		true
+    captionsAllowed:		true
+    backgroundBlurAllowed:	true	
+    fileReceiveAllowed: true
+    surveyAllowed: true
+
+
+
+
+## Cospace Template
+Cospace_Template:
+  Cospace_Template_1:
+    name: Space_template_1
+    description: Description of this cospace template
+
+

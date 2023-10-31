@@ -1,0 +1,39 @@
+# Add Call_Profile
+
+- name: Add Call_Profile  POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/callprofiles
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      name: "{{ Call_Profile['Profile_allow_everything']['name'] }}"
+      participantLimit: "{{ Call_Profile['Profile_allow_everything']['participantLimit'] }}"
+      locked: "{{ Call_Profile['Profile_allow_everything']['locked'] }}"
+      recordingMode: "{{ Call_Profile['Profile_allow_everything']['recordingMode'] }}" 
+      streamingMode: "{{ Call_Profile['Profile_allow_everything']['streamingMode'] }}"
+      passcodeMode: "{{ Call_Profile['Profile_allow_everything']['passcodeMode'] }}"
+      passcodeTimeout: "{{ Call_Profile['Profile_allow_everything']['passcodeTimeout'] }}"
+      gatewayAudioCallOptimization: "{{ Call_Profile['Profile_allow_everything']['gatewayAudioCallOptimization'] }}"
+      sipRecordeUri: "{{ Call_Profile['Profile_allow_everything']['sipRecordeUri'] }}"
+      sipStremerUri: "{{ Call_Profile['Profile_allow_everything']['sipStremerUri'] }}"
+      messageBannerText: "{{ Call_Profile['Profile_allow_everything']['messageBannerText'] }}"
+      chatAllowed: 	"{{ Call_Profile['Profile_allow_everything']['chatAllowed'] }}"
+      raiseHandEnabled: "{{ Call_Profile['Profile_allow_everything']['raiseHandEnabled'] }}"
+      notesAllowed:		"{{ Call_Profile['Profile_allow_everything']['notesAllowed'] }}"
+      captionsAllowed:		"{{ Call_Profile['Profile_allow_everything']['captionsAllowed'] }}"
+      backgroundBlurAllowed:	"{{ Call_Profile['Profile_allow_everything']['backgroundBlurAllowed'] }}"	
+      fileReceiveAllowed: "{{ Call_Profile['Profile_allow_everything']['fileReceiveAllowed'] }}"
+      surveyAllowed: "{{ Call_Profile['Profile_allow_everything']['surveyAllowed'] }}"
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: call_profile_allow_everything_response
+
+- debug:
+    var: call_profile_allow_everything_response
+

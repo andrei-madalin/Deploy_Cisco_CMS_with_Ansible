@@ -15,13 +15,17 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
   
 ## Prerequisites
         Before you begin the Cisco Meeting Server deployment, ensure you have the following prerequisites:
+        
         1. Ansible workstation (Windows with WSL or Linux)
                 for WSL: https://learn.microsoft.com/en-gb/windows/wsl/install
+        
         2. Install Ansible packages
                 # apt install ansible
+        
         3. A server or virtual machine with Cisco Meeting Server
                 
                 a. Cisco Meeting Server software installation package ( CMS version tested 3.8).
+        
                 b. Asign IP on CMS VM you need to:
                         - Access console VM CMS :
                                 - ipv4 a add ip/mask gw
@@ -52,10 +56,15 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
         6. Configure LDAP  integration
                 ldap.yml
 
+        7. Configure Call Leg Profiles  
+                call_leg_profiles.yml
+
+
 
 ##  Deployment Steps
+
         1. One step only:
-                run ansible-playbook command to config one step:
+                Run ansible-playbook command to config one step:
                         $ ansible-playbook -i hosts playbook.yml --ask-pass 
 
         2. Run only one or more tasks:

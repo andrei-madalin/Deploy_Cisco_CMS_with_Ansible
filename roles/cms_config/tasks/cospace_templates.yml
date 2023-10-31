@@ -1,0 +1,24 @@
+# Add CoSpaceTemplates
+
+- name: Add CoSpaceTemplates  POST
+  uri:
+    url: https://{{ ansible_host }}:{{ webadmin_port | default('8443') }}/api/v1/coSpaceTemplates
+    method: POST
+    force_basic_auth: yes
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    body_format: form-urlencoded
+    body:
+      name: "{{ Cospace_Template['Cospace_Template_1']['name'] }}"
+      description: "{{ Cospace_Template['Cospace_Template_1']['description'] }}"
+    
+    status_code:
+      - 200
+      - 400  # Return if entry aleady exists
+  delegate_to: localhost
+  register: coSpaceTemplates_response
+
+- debug:
+    var: coSpaceTemplates_response
+

@@ -28,10 +28,23 @@
 #   import_tasks: ldap.yml
 #   tags: Configure_ldap
 
-#    Call call_leg_profiles yml file to config call leg profile 
-- name: Configure call_leg_profile
-  import_tasks: call_leg_profiles.yml
-  tags: Configure_call_leg_profiles
+# #    Call call_leg_profiles yml file to config call leg profile 
+# - name: Configure call_leg_profile
+#   import_tasks: call_leg_profiles.yml
+#   tags: Configure_call_leg_profiles
+
+
+# #    Call call_profiles yml file to config call  profile 
+# - name: Configure call_profile
+#   import_tasks: call_profiles.yml
+#   tags: Configure_call_profiles
+
+
+
+#    Call cospace_templates yml file to config call  profile 
+- name: Configure cospace templates
+  import_tasks: cospace_templates.yml
+  tags: Configure_cospace_templates
 
 
 
