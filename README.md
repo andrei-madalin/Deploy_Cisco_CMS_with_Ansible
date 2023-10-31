@@ -8,7 +8,18 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
   - [Step 2: Install Ansible packages ](#step-2-Install-Ansible)
   - [Step 3: Configure network on CMS ](#step-3-configure-netork-CMS)
 - [Variable Steps](#Variable-steps)
+ - [Step 1: host file](#step-1-host-file)
+ - [Step 2: variable file](#step-2-variable-file)
 - [Tasks Steps](#Tasks-steps)
+ - [Step 1: Network config & certificate](#step-1-gen_cert)
+ - [Step 2: Webadmin](#step-2-Webadmin)
+ - [Step 3: Callbridge](#step-3-Callbridge)
+ - [Step 4: Webbridge3](#step-4-Webbridge3)
+ - [Step 5: Scheduler](#step-5-Scheduler)
+ - [Step 6: LDAP](#step-6-LDAP)
+ - [Step 7: Call_Leg_Profiles](#step-7-Call_Leg_Profiles)
+ - [Step 8: Call_Profiles](#step-8-Call_Profiles)
+ - [Step 9: CoSpaceTemplates](#step-9-CoSpaceTemplates)
 - [Deployment Steps](#deployment-steps)
   - [Step 1: One step only](#step-1-one-step-only)
   - [Step 2: One or more tasks](#step-2-run-one-or-more-tasks)
@@ -17,7 +28,7 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
         Before you begin the Cisco Meeting Server deployment, ensure you have the following prerequisites:
         
         1. Ansible workstation (Windows with WSL or Linux)
-                for WSL: https://learn.microsoft.com/en-gb/windows/wsl/install
+                - for WSL: https://learn.microsoft.com/en-gb/windows/wsl/install
         
         2. Install Ansible packages
                 # apt install ansible
@@ -31,7 +42,7 @@ This guide provides step-by-step instructions for deploying Cisco Meeting Server
                                 - ipv4 a add ip/mask gw
                                 - ipv4 a enable 
 
-                c. Network connectivity to integrate with your existing environment.
+                c. Network connectivity between Asible and CMS
 
 ## Variable Steps
         1. Complete hosts file with VM CMS IP (ansible_host) and username (ansible_user).
