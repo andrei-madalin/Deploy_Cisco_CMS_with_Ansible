@@ -1,7 +1,6 @@
 # Deploy Cisco Meeting Server  with ANSIBLE
 
-This guide provides step-by-step instructions for deploying Cisco Meeting Server (CMS) in your environment with Ansible for testing and not only. 
-Cisco Meeting Server is a powerful collaboration platform that enables video and audio meetings for organizations. It offers scalability, security, and integration capabilities for effective communication.
+This guide demonstrate how Ansible can configure almost all components of Cisco Meeting Server (CMS).
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
